@@ -2,7 +2,7 @@
 
 
 namespace Tech\Model;
-
+use Tech\Core\Database;
 
 class User
 {
@@ -10,9 +10,20 @@ class User
     {
 
     }
-
-    public static function sayHi()
+    public function fetchAll()
     {
-        echo "Hello from User";
+
+    }
+    public function fetch($id)
+    {
+
+    }
+    public function update($id)
+    {
+
+    }
+    public function delete($id)
+    {
+
     }
 }

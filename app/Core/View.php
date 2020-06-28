@@ -8,7 +8,6 @@ class View
     {
         if (file_exists(sprintf('%s%s.php', APP_VIEWS_PATH, $view))) {
             require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/header');
-            require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/navbar');
 
             require sprintf('%s%s.php', APP_VIEWS_PATH, $view);
             require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/footer');

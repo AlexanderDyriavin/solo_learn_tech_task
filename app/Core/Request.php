@@ -31,7 +31,6 @@ class Request
     {
         //Todo:Replace with a try catch
         $controllerName = ucfirst($this->controller) . "Controller";
-
         if (!class_exists(self::PATH . $controllerName)) {
             echo "Controller not found<br>";
             return false;

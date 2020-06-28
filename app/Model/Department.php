@@ -11,4 +11,8 @@ class Department
     {
         return $this;
     }
+    public function fetchAll()
+    {
+        return $this;
+    }
 }

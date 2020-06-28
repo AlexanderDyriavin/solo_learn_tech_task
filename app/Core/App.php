@@ -2,7 +2,7 @@
 
 namespace Tech\Core;
 use Tech\Controller;
-use Tech\Controller\ActionController;
+use Tech\Controller\UsersController;
 class App
 {
     public function run()

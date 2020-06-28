@@ -10,6 +10,6 @@ class DefaultController
 {
     public function index()
     {
-         return View::render('index', ['name'=> 'Alexander']);
+         return View::render('index',[]);
     }
 }

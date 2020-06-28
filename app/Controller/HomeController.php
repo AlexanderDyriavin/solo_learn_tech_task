@@ -4,10 +4,12 @@
 namespace Tech\Controller;
 
 
+use Tech\Core\View;
+
 class HomeController
 {
     public function index()
     {
-        return $this;
+        return View::render('home',[]);
     }
 }
