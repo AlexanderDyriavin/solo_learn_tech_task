@@ -6,7 +6,7 @@ namespace Tech\Core;
 
 class Request
 {
-    private $controller = 'DefaultController';
+    private $controller = 'Default';
     private $method = "index";
     const PATH = "Tech\\Controller\\";
 

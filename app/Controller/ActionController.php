@@ -5,6 +5,7 @@ namespace Tech\Controller;
 
 
 use Tech\Model\User;
+use  Tech\Core\View;
 
 class ActionController
 {
@@ -16,5 +17,6 @@ class ActionController
     {
         User::sayHi();
         echo "Move method called";
+        $template = View::render("move");
     }
 }

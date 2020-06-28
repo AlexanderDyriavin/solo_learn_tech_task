@@ -4,10 +4,10 @@
 namespace Tech\Controller;
 
 
-class DefaultController
+class HomeController
 {
     public function index()
     {
-         echo __CLASS__;
+        return $this;
     }
 }
