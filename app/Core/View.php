@@ -2,15 +2,16 @@
 
 
 namespace Tech\Core;
-
-
 class View
 {
-    public static function  render(string $view): void
+    public static function render(string $view, array $data = [])
     {
-        $viewPath = __DIR__ . "/../View/" . $view . ".tpl.php";
-        if (file_exists($viewPath)){
-            include  $viewPath;
+        if (file_exists(sprintf('%s%s.php', APP_VIEWS_PATH, $view))) {
+            require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/header');
+            require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/navbar');
+
+            require sprintf('%s%s.php', APP_VIEWS_PATH, $view);
+            require sprintf('%s%s.php', APP_VIEWS_PATH, 'html_blocks/footer');
         }
 
     }

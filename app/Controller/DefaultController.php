@@ -4,10 +4,12 @@
 namespace Tech\Controller;
 
 
+use Tech\Core\View;
+
 class DefaultController
 {
     public function index()
     {
-         echo __CLASS__;
+         return View::render('index', ['name'=> 'Alexander']);
     }
 }
