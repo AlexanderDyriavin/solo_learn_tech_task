@@ -3,16 +3,31 @@
 
 namespace Tech\Model;
 
+use Tech\Core\Database;
+use Tech\Core\ErrorHandler;
+use Tech\Core\View;
 
-class Department
+class Department extends Database
 {
-    private $table = 'departments';
-    public function __construct()
+    public static function create($name)
     {
-        return $this;
+        $query = self::run('INSERT INTO `departments`(`name`) VALUES (?)', [$name]);
+
     }
-    public function fetchAll()
+
+    public static function update($id)
     {
-        return $this;
+        //Todo: Тут можно было бы написать фукцию для апдейта отдела
+    }
+    public static function delete($id)
+    {
+        self::run('Delete FROM `departments` WHERE `department_id` = ? ', [$id]);
+
+    }
+
+    public static function fetchAll()
+    {
+        $all = self::run('SELECT * FROM `departments` ORDER BY department_id ASC')->fetchAll();
+        return $all;
     }
 }

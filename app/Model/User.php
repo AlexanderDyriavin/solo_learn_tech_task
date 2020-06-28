@@ -6,7 +6,7 @@ use Tech\Core\Database;
 
 class User
 {
-    public function create()
+    public static function create($data)
     {
 
     }

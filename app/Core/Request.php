@@ -8,6 +8,8 @@ class Request
 {
     private $controller = 'Default';
     private $method = "index";
+    private $params = '';
+
     const PATH = "Tech\\Controller\\";
 
     public function __construct()
@@ -19,6 +21,9 @@ class Request
         }
         if (isset($uri[2])) {
             $this->method = $uri[2];
+        }
+        if (isset($uri[3])){
+            $this->params = $uri[3];
         }
         $this->validateRequest();
         if (!$this->validateRequest()) {
@@ -74,5 +79,20 @@ class Request
         $this->method = $method;
     }
 
+    /**
+     * @return mixed|string|null
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * @param mixed|string|null $params
+     */
+    public function setParams($params): void
+    {
+        $this->params = $params;
+    }
 
 }

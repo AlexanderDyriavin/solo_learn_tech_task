@@ -4,6 +4,7 @@
 namespace Tech\Core;
 
 use PDO;
+use Tech\Core\ErrorHandler;
 
 class Database
 {
@@ -46,7 +47,10 @@ class Database
         try {
             $stmt->execute($args);
         } catch (\Exception $e) {
-            throw new ErrorHandler('Something went wrong', 500);
+            View::render('error',
+                ['error_code' => $e->getCode(),
+                    'message' => $e->getMessage()
+                ]);
         }
         return $stmt;
     }
