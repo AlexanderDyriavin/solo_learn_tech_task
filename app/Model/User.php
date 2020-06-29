@@ -2,26 +2,50 @@
 
 
 namespace Tech\Model;
+
 use Tech\Core\Database;
 
-class User
+class User extends Database
 {
     public static function create($data)
     {
+        self::run("INSERT INTO `users`(`name`,`email`,`address`,`phone`,`comments`,`department`) 
+        VALUES (?,?,?,?,?,?)", [$data['username'], $data['email'], $data['address'], $data['phone'], $data['comments'], (int)$data['department']]);
 
     }
-    public function fetchAll()
+
+    public static function fetchAll()
+    {
+        return self::run("SELECT * FROM `users` ORDER BY `user_id` ASC ")->fetchAll();
+    }
+
+    public static function fetchAllData()
+    {
+        return self::run("SELECT `user_id`, 
+       `name` AS `user_name`, 
+       `email`, 
+       `address`, 
+       `phone`, 
+       `comments`, 
+       `department`,
+       `deparment_name`
+FROM   `users` 
+       INNER JOIN (SELECT `name` AS `deparment_name`, 
+                          `department_id` 
+                   FROM   `departments`) AS `dpt` 
+               ON `users`.`department` = `dpt`.`department_id`")->fetchAll();
+    }
+
+    public static function fetch($id)
     {
 
     }
-    public function fetch($id)
-    {
 
-    }
     public function update($id)
     {
 
     }
+
     public function delete($id)
     {
 

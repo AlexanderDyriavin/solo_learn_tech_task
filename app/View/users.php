@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $data -> passing from UserController->index()
+ */
+?>
 <h3>Create new Employer</h3>
 <form method="post" action="/users/create">
     <div class="form-row">
@@ -16,21 +21,45 @@
     </div>
     <div class="form-group">
         <label for="phone">Phone number of employee </label>
-        <input type="tel" name="phone" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+        <input type="tel" name="phone" class="form-control" id="phone"
                placeholder="380962696266">
     </div>
     <div class="form-group">
         <label for="comments">Comments for this user</label>
         <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
     </div>
-    <!--render the Departments -->
     <div class="form-group">
-        <label for="inputState">Department</label>
-        <select id="inputState" class="form-control">
+        <label for="department">Department</label>
+        <select id="department" name="department" class="form-control">
             <option selected>Choose...</option>
-            <option>...</option>
+
+            <!--Todo: Create a foreach for departments !! -->
+            <? foreach ($data['departments'] as $key => $department) :{?>
+            <option value="<? echo $department->department_id ?>"><? echo $department->name ?></option>
+            <? } endforeach; ?>
         </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Create user</button>
 </form>
+<section>
+    <h4 class="mt-2">List of All users</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <? foreach ($data['users'] as $key => $user) : {?>
+        <tr>
+            <th scope="row"><? echo $user->user_id ?></th>
+            <td><? echo $user->name ?></td>
+            <td><? echo $user->email ?></td>
+            <? } endforeach; ?>
+        </tr>
+        </tbody>
+    </table>
+</section>

@@ -5,5 +5,5 @@
 ?>
 
 <h1>
-     <?php echo $data['name'] ?>
+     <?php echo $data?>
 </h1>

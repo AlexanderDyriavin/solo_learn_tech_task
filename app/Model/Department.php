@@ -24,10 +24,12 @@ class Department extends Database
         self::run('Delete FROM `departments` WHERE `department_id` = ? ', [$id]);
 
     }
-
+    public function find($id)
+    {
+        self::run('SELECT * FROM `depraments` WHERE `deparment_id` =? ',[$id])->fetchAll();
+    }
     public static function fetchAll()
     {
-        $all = self::run('SELECT * FROM `departments` ORDER BY department_id ASC')->fetchAll();
-        return $all;
+        return self::run('SELECT * FROM `departments` ORDER BY department_id ASC')->fetchAll();
     }
 }

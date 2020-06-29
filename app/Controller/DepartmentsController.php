@@ -14,10 +14,7 @@ class DepartmentsController
     {
         return View::render('departments',['departments' => Department::fetchAll()]);
     }
-    public function fetch()
-    {
 
-    }
     public static function create()
     {
         $data = DepartmentRequest::validate($_POST);
