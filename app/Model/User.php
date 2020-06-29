@@ -38,16 +38,24 @@ FROM   `users`
 
     public static function fetch($id)
     {
-
+        return self::run("SELECT `user_id`, 
+       `name` AS `user_name`, 
+       `email`, 
+       `address`, 
+       `phone`, 
+       `comments`, 
+       `department`,
+       `deparment_name`
+FROM   `users` 
+       INNER JOIN (SELECT `name` AS `deparment_name`, 
+                          `department_id` 
+                   FROM   `departments`) AS `dpt` 
+               ON `users`.`department` = `dpt`.`department_id` 
+               WHERE `users`.user_id = ?",[$id])->fetchAll();
     }
 
-    public function update($id)
+    public static function delete($id)
     {
-
-    }
-
-    public function delete($id)
-    {
-
+        self::run('Delete FROM `users` WHERE `user_id` = ? ', [$id]);
     }
 }

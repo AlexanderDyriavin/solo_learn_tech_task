@@ -26,4 +26,9 @@ class UsersController
     {
         return View::render('view',['user_data' => User::fetch($id)]);
     }
+    public static function delete($id)
+    {
+        User::delete($id);
+        header('Location: /home');
+    }
 }

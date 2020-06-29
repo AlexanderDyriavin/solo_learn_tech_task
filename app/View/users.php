@@ -34,13 +34,19 @@
             <option selected>Choose...</option>
 
             <!--Todo: Create a foreach for departments !! -->
-            <? foreach ($data['departments'] as $key => $department) :{?>
-            <option value="<? echo $department->department_id ?>"><? echo $department->name ?></option>
+            <? foreach ($data['departments'] as $key => $department) :{ ?>
+                <option value="<? echo $department->department_id ?>"><? echo $department->name ?></option>
             <? } endforeach; ?>
         </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Create user</button>
+    <?php
+    if (empty($data['departments'])) {
+        echo "<h5>Firstly you need to create <a href='/departments/'>Deparments</a></h5>";
+        echo '<button type="submit" class="btn btn-primary" disabled>Create user</button>';
+    } else {
+        echo '<button type="submit" class="btn btn-primary">Create user</button>';
+    }
+    ?>
 </form>
 <section>
     <h4 class="mt-2">List of All users</h4>
@@ -53,7 +59,7 @@
         </tr>
         </thead>
         <tbody>
-        <? foreach ($data['users'] as $key => $user) : {?>
+        <? foreach ($data['users'] as $key => $user) : { ?>
         <tr>
             <th scope="row"><? echo $user->user_id ?></th>
             <td><? echo $user->name ?></td>
