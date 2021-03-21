@@ -56,6 +56,6 @@ FROM   `users`
 
     public static function delete($id)
     {
-        self::run('Delete FROM `users` WHERE `user_id` = ? ', [$id]);
+        self::run('DELETE FROM `users` WHERE `user_id` = ? ', [$id]);
     }
 }
