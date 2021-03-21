@@ -11,21 +11,25 @@ use Tech\Requests\UserRequest;
 
 class UsersController
 {
-    public function index()
+    public function index(): View
     {
-        return View::render('users',['users'=> User::fetchAll(),
+        return View::render('users',
+            ['users' => User::fetchAll(),
                 'departments' => Department::fetchAll()]);
     }
+
     public function create()
     {
         $data = UserRequest::validate($_POST);
         User::create($data);
         header('Location: /users');
     }
+
     public function view($id)
     {
-        return View::render('view',['user_data' => User::fetch($id)]);
+        return View::render('view', ['user_data' => User::fetch($id)]);
     }
+
     public static function delete($id)
     {
         User::delete($id);

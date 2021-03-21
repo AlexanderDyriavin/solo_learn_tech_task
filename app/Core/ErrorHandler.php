@@ -1,28 +1,36 @@
 <?php
 
-
 namespace Tech\Core;
 
+use Exception;
+use Symfony\Component\HttpFoundation\Response;
 
-class ErrorHandler extends \Exception
+class ErrorHandler extends Exception
 {
-    public function __construct($message, $code)
+    public function __construct(string $message, int $code)
     {
         parent::__construct($message, $code);
     }
-    public function renderError()
+
+    public function renderError(): Response
     {
+        $response = new Response('Content', null, ['content-type' => 'text/html']);
+
         switch ($this->getCode()) {
-            case '404':
-                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+            case Response::HTTP_NOT_FOUND:
+                $response->setStatusCode(Response::HTTP_NOT_FOUND);
                 break;
-            case '500':
-                header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
+            case Response::HTTP_UNPROCESSABLE_ENTITY:
+                $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
+                break;
+            case Response::HTTP_INTERNAL_SERVER_ERROR:
+                $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
                 break;
         }
-        echo View::render('error', [
-            'error_code' => $this->getCode(),
-            'message' => $this->getMessage()
-        ]);
+    }
+
+    private function errorView(): View
+    {
+        //TODO implement
     }
 }

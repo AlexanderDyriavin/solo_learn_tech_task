@@ -2,9 +2,6 @@
 
 namespace Tech\Core;
 
-use Tech\Controller;
-use Tech\Controller\UsersController;
-
 class App
 {
     final public function run(Request $request): void
