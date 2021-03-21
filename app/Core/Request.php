@@ -1,13 +1,13 @@
 <?php
 
-
 namespace Tech\Core;
-
 
 class Request
 {
     private $controller = 'Default';
+
     private $method = "index";
+
     private $params = '';
 
     const PATH = "Tech\\Controller\\";
@@ -22,13 +22,14 @@ class Request
         if (isset($uri[2])) {
             $this->method = $uri[2];
         }
-        if (isset($uri[3])){
+        if (isset($uri[3])) {
             $this->params = $uri[3];
         }
         $this->validateRequest();
         if (!$this->validateRequest()) {
             return "404 not found";
         }
+
         return $this;
     }
 
@@ -38,12 +39,15 @@ class Request
         $controllerName = ucfirst($this->controller) . "Controller";
         if (!class_exists(self::PATH . $controllerName)) {
             echo "Controller not found<br>";
+
             return false;
         }
         if (!method_exists(self::PATH . $controllerName, $this->method)) {
             echo "Method not found<br>";
+
             return false;
         }
+
         return $this;
     }
 
@@ -52,7 +56,7 @@ class Request
      */
     public function getController()
     {
-        return self::PATH.ucfirst($this->controller)."Controller";
+        return self::PATH . ucfirst($this->controller) . "Controller";
     }
 
     /**
@@ -94,5 +98,4 @@ class Request
     {
         $this->params = $params;
     }
-
 }

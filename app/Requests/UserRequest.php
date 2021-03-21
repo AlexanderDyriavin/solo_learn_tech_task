@@ -1,23 +1,24 @@
 <?php
 
-
 namespace Tech\Requests;
 
+use Request;
 
 class UserRequest
 {
-    public static function validate($request)
+    public static function validate(Request $request): ?array
     {
-        if (empty($request) || !isset($request)){
+        if ($request === null || !isset($request)) {
             return null;
         }
-        return $data = [
-            'email'=> $request['email'],
+
+        return [
+            'email' => $request['email'],
             'username' => $request['username'],
             'address' => $request['address'],
             'phone' => $request['phone'],
             'comments' => $request['comments'],
-            'department' => $request['department']
+            'department' => $request['department'],
         ];
     }
 }

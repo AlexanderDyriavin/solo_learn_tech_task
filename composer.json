@@ -7,5 +7,7 @@
             "email": "dyriavin@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }

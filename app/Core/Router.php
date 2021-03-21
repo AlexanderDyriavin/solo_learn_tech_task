@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tech\Core;
-
 
 class Router
 {

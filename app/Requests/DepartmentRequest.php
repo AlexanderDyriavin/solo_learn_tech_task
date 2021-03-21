@@ -1,17 +1,15 @@
 <?php
 
-
 namespace Tech\Requests;
-
 
 class DepartmentRequest
 {
-    public static function validate($request)
+    public static function validate($request): ?string
     {
-        if (!empty($request['department'])){
+        if (!empty($request['department'])) {
             return $request['department'];
-        } else {
-            return null;
         }
+
+        return null;
     }
 }
