@@ -11,7 +11,6 @@ class DefaultController
 {
     public function index()
     {
-
          return View::render('home');
     }
 }

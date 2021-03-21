@@ -1,11 +1,11 @@
 {
-  "autoload": {
-    "psr-4": {
-      "Tech\\": "app/"
-    }
-  },
-  "require": {
-    "ext-pdo": "*",
-    "ext-http": "*"
-  }
+    "name": "dyriavin/my-mvc-framework",
+    "description": "Simple PHP framework",
+    "authors": [
+        {
+            "name": "Dyriavin",
+            "email": "dyriavin@gmail.com"
+        }
+    ],
+    "require": {}
 }
